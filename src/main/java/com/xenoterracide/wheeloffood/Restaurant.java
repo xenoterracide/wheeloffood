@@ -30,10 +30,11 @@ public class Restaurant implements java.io.Serializable {
     }
 
     public Boolean isOpen( Calendar now ) {
-        Calendar timeOpensAt = Calendar.getInstance();
+        Calendar timeOpensAt  = Calendar.getInstance();
         Calendar timeClosesAt = Calendar.getInstance();
 
-        timeOpensAt.set(Calendar.HOUR_OF_DAY, this.opensAt);
+        /* dragons, need to be clearer about other pieces of time */
+        timeOpensAt.set( Calendar.HOUR_OF_DAY, this.opensAt );
         timeClosesAt.set(Calendar.HOUR_OF_DAY, this.closesAt);
 
         if ( now.after(timeOpensAt) && now.before(timeClosesAt)) {
