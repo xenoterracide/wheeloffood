@@ -1,13 +1,18 @@
 
 package com.xenoterracide.wheeloffood;
 
-import org.junit.Test;
+import org.junit.*;
 import static org.junit.Assert.*;
+import org.junit.matchers.JUnitMatchers;
+import org.junit.rules.ExpectedException;
 
 public class TimeTest {
 
     public TimeTest() {
     }
+
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
 
     @Test
     public void testHour() {
@@ -16,10 +21,28 @@ public class TimeTest {
         instance.setHour(hour);
 
         assertEquals("hour", hour, instance.getHour());
+    }
 
-        hour = 32;
-        instance.setHour(32);
-        assertEquals("hour", hour, instance.getHour());
+    @Test
+    public void testHourExceptionBelowZero() {
+        Integer hour  = -1;
+        Time instance = new Time();
+
+        thrown.expect(IllegalArgumentException.class);
+        thrown.expectMessage( "Hour must be 0-23");
+
+        instance.setHour(hour);
+    }
+
+    @Test
+    public void testHourExceptionAboveTwentyThree() {
+        Integer hour  = 24;
+        Time instance = new Time();
+
+        thrown.expect(IllegalArgumentException.class);
+        thrown.expectMessage( "Hour must be 0-23");
+
+        instance.setHour(hour);
     }
 
     @Test
@@ -28,7 +51,18 @@ public class TimeTest {
         Time instance = new Time();
         instance.setMinute(minute);
 
-        assertEquals("minute", minute, instance.getMinute());
+        assertEquals("minute", minute, instance.getMinute());     // test exception bounds
+    }
+
+    @Test
+    public void testMinuteExceptionBelowZero() {
+        Integer minute  = -1;
+        Time instance = new Time();
+
+        thrown.expect(IllegalArgumentException.class);
+        thrown.expectMessage( "Minute must be 0-59");
+
+        instance.setMinute(minute);
     }
 
     @Test
@@ -38,5 +72,16 @@ public class TimeTest {
         instance.setSecond(second);
 
         assertEquals("second", second, instance.getSecond());
+    }
+
+    @Test
+    public void testSecondExceptionBelowZero() {
+        Integer second  = -1;
+        Time instance = new Time();
+
+        thrown.expect(IllegalArgumentException.class);
+        thrown.expectMessage( "Second must be 0-59");
+
+        instance.setSecond(second);
     }
 }
