@@ -21,14 +21,6 @@ public class Restaurant implements java.io.Serializable {
         this.closesAt = closesAt;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
     public Boolean isOpen( Calendar now ) {
         Calendar timeOpensAt  = Calendar.getInstance();
         Calendar timeClosesAt = Calendar.getInstance();
@@ -42,6 +34,14 @@ public class Restaurant implements java.io.Serializable {
         }
 
         return false;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return this.name;
     }
 
     public void setOpensAt(Integer opensAt) {
