@@ -1,7 +1,6 @@
 package com.xenoterracide.wheeloffood;
 
 import java.util.Calendar;
-import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import junit.framework.TestCase;
 import static junit.framework.TestCase.assertEquals;
