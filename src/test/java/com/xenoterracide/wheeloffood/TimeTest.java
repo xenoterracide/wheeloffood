@@ -3,7 +3,6 @@ package com.xenoterracide.wheeloffood;
 
 import org.junit.*;
 import static org.junit.Assert.*;
-import org.junit.matchers.JUnitMatchers;
 import org.junit.rules.ExpectedException;
 
 public class TimeTest {
