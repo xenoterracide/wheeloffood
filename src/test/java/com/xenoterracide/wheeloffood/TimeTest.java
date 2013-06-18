@@ -64,6 +64,19 @@ public class TimeTest {
         instance.setMinute(minute);
     }
 
+    
+    @Test
+    public void testMinuteExceptionAboveFiftyNine() {
+        Integer minute  = 60;
+        Time instance = new Time();
+
+        thrown.expect(IllegalArgumentException.class);
+        thrown.expectMessage( "Minute must be 0-59");
+
+        instance.setMinute(minute);
+    }
+    
+    
     @Test
     public void testSecond() {
         Integer second = 21;
@@ -83,4 +96,16 @@ public class TimeTest {
 
         instance.setSecond(second);
     }
+    
+    @Test
+    public void testSecondExceptionAboveFiftyNine() {
+        Integer second  = 60;
+        Time instance = new Time();
+
+        thrown.expect(IllegalArgumentException.class);
+        thrown.expectMessage( "Second must be 0-59");
+
+        instance.setSecond(second);
+    }
+    
 }
